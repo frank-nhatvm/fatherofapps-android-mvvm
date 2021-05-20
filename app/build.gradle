@@ -1,9 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
+    buildFeatures{
+        dataBinding = true
+    }
+
     compileSdkVersion 30
 
     defaultConfig {
@@ -29,6 +39,27 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    flavorDimensions "default"
+    productFlavors {
+
+        dev {
+            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_DEV'])
+            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_DEV'])
+        }
+
+        staging {
+            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_STAGING'])
+            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_STAGING'])
+        }
+
+        live {
+            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_LIVE'])
+            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_LIVE'])
+        }
+
+    }
+
 }
 
 dependencies {
@@ -37,7 +68,78 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+    implementation 'androidx.navigation:navigation-fragment:2.3.2'
+    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
+    // testing JUnit 4 framework
+    testImplementation 'junit:junit:4.13.1'
+
+    // testing Mockito
+    testImplementation 'org.mockito:mockito-core:2.25.0'
+    testImplementation 'org.mockito:mockito-android:2.24.5'
+    testImplementation 'org.mockito:mockito-inline:2.25.0'
+
+    // testing Power Mock for mock final class and method
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.9'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.9'
+    testImplementation 'org.powermock:powermock-core:1.7.4'
+
+
+    // testing mock web server
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver"
+
+    // testing AndroidX Test - JVM testing
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+
+    // testing robolectric
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+
+    // testing arch
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    // constraint layout
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+
+    // view model scope
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    // moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    // okhttpclient
+    implementation "com.squareup.okhttp3:okhttp:$ok_httpclient_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$ok_httpclient_version"
+
+    // glide library
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    // dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // coroutine
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+
+    // viewpager 2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    implementation "androidx.activity:activity-ktx:1.2.0"
+
+    // flexbox
+    implementation 'com.google.android:flexbox:2.0.1'
+
+    //circle image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
