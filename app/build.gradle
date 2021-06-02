@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-android-extensions'
 }
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")

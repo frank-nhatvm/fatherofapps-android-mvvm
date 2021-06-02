@@ -1,4 +1,9 @@
 package com.fatherofapps.androidbase.ui.home
 
-class HomeFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class HomeFragment : BaseFragment() {
+
+
+
 }

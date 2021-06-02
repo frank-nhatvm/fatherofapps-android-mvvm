@@ -1,4 +1,7 @@
 package com.fatherofapps.androidbase.ui.customer.login
 
-class LoginViewModel {
+import com.fatherofapps.androidbase.base.viewmodel.BaseViewModel
+import javax.inject.Inject
+
+class LoginViewModel @Inject constructor() : BaseViewModel() {
 }

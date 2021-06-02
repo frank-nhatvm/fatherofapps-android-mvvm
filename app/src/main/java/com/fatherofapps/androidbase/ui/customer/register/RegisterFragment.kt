@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.customer.register
 
-class RegisterFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class RegisterFragment : BaseFragment() {
 }

@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.catalog.product.detail
 
-class ProductDetailFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class ProductDetailFragment : BaseFragment() {
 }

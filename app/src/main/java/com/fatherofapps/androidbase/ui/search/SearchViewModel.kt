@@ -1,4 +1,7 @@
 package com.fatherofapps.androidbase.ui.search
 
-class SearchViewModel {
+import com.fatherofapps.androidbase.base.viewmodel.BaseViewModel
+import javax.inject.Inject
+
+class SearchViewModel @Inject constructor() : BaseViewModel() {
 }

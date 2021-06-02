@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.customer.login
 
-class LoginFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class LoginFragment : BaseFragment() {
 }

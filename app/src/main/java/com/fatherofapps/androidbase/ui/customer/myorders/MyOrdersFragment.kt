@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.customer.myorders
 
-class MyOrdersFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class MyOrdersFragment :BaseFragment() {
 }

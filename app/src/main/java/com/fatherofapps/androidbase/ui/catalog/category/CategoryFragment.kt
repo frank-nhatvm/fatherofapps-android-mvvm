@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.catalog.category
 
-class CategoryFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class CategoryFragment :BaseFragment() {
 }

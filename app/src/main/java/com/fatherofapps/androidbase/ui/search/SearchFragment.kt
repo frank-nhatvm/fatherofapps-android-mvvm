@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.search
 
-class SearchFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class SearchFragment : BaseFragment() {
 }

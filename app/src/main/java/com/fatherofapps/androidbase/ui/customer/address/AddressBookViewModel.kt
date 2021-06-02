@@ -1,4 +1,7 @@
 package com.fatherofapps.androidbase.ui.customer.address
 
-class AddressBookViewModel {
+import com.fatherofapps.androidbase.base.viewmodel.BaseViewModel
+import javax.inject.Inject
+
+class AddressBookViewModel @Inject constructor() : BaseViewModel() {
 }

@@ -1,4 +1,7 @@
 package com.fatherofapps.androidbase.ui.home
 
-class HomeViewModel {
+import com.fatherofapps.androidbase.base.viewmodel.BaseViewModel
+import javax.inject.Inject
+
+class HomeViewModel @Inject constructor() : BaseViewModel() {
 }

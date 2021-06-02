@@ -1,4 +1,6 @@
 package com.fatherofapps.androidbase.ui.customer.changepassword
 
-class ChangePasswordFragment {
+import com.fatherofapps.androidbase.base.fragment.BaseFragment
+
+class ChangePasswordFragment : BaseFragment() {
 }
