@@ -26,6 +26,9 @@ open class BaseViewModel : ViewModel() {
     var notifyMessageResourceId = MutableLiveData<Event<Int>>()
         protected set
 
+    var isLoadingMore = MutableLiveData<Event<Boolean>>()
+        protected set
+
     protected fun showError(messageId: Int) {
         errorMessageResourceId.postValue(Event(messageId))
     }
@@ -44,6 +47,10 @@ open class BaseViewModel : ViewModel() {
 
     protected fun showLoading(isShow: Boolean) {
         isLoading.postValue(Event(isShow))
+    }
+
+    protected fun showLoadingMore(isShow: Boolean){
+        isLoadingMore.postValue(Event(isShow))
     }
 
     protected fun navigateToPage(actionId: Int) {
@@ -66,7 +73,7 @@ open class BaseViewModel : ViewModel() {
         }
     }
 
-    open fun fetchData(){
+    open fun fetchData() {
 
     }
 

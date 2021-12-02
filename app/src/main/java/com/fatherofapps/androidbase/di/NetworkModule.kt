@@ -7,6 +7,8 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,38 +17,13 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-    @Provides
-    fun provideCartAPI(@Named("MainSite") retrofit: Retrofit): CartAPI{
-      return retrofit.create(CartAPI::class.java)
-    }
-
-    @Provides
-    fun provideCategoryAPI(@Named("MainSite") retrofit: Retrofit): CategoryAPI{
-        return retrofit.create(CategoryAPI::class.java)
-    }
-
-    @Provides
-    fun provideCountryAPI(@Named("MainSite") retrofit: Retrofit): CountryAPI{
-        return retrofit.create(CountryAPI::class.java)
-    }
-
-    @Provides
-    fun provideCustomerAPI(@Named("MainSite") retrofit: Retrofit): CustomerAPI {
-        return retrofit.create(CustomerAPI::class.java)
-    }
-
-    @Provides
-    fun provideProductAPI(@Named("MainSite") retrofit: Retrofit): ProductAPI {
-        return retrofit.create(ProductAPI::class.java)
-    }
-
-    @Provides
-    fun provideStoreAPI(@Named("MainSite") retrofit: Retrofit): StoreAPI {
-        return retrofit.create(StoreAPI::class.java)
-    }
-
+//    @Provides
+//    fun provideCustomerAPI(@Named("MainSite") retrofit: Retrofit): CustomerAPI {
+//        return retrofit.create(CustomerAPI::class.java)
+//    }
 
 
     @Provides

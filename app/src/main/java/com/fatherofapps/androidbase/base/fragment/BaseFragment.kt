@@ -3,7 +3,8 @@ package com.fatherofapps.androidbase.base.fragment
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.findNavController
-import com.fatherofapps.androidbase.activities.MainActivity
+import com.fatherofapps.androidbase.R
+import com.fatherofapps.androidbase.base.activities.BaseActivity
 import com.fatherofapps.androidbase.base.network.BaseNetworkException
 import com.fatherofapps.androidbase.base.viewmodel.BaseViewModel
 import com.fatherofapps.androidbase.common.EventObserver
@@ -37,16 +38,18 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    protected fun showNotify(message: String){
+    protected fun showNotify(title: String?, message: String) {
         val activity = requireActivity()
         if (activity is BaseActivity) {
-            activity.showNotifyDialog(message)
+            activity.showNotifyDialog(title ?: getDefaultNotifyTitle(), message)
         }
     }
 
-    protected fun showNotify(messageId: Int){
-        val message = requireContext().getString(messageId)
-        showNotify(message)
+    protected fun showNotify(titleId: Int = R.string.default_notify_title, messageId: Int) {
+        val activity = requireActivity()
+        if (activity is BaseActivity) {
+            activity.showNotifyDialog(titleId, messageId)
+        }
     }
 
     protected fun registerObserverExceptionEvent(
@@ -63,7 +66,7 @@ open class BaseFragment : Fragment() {
         viewLifecycleOwner: LifecycleOwner
     ) {
         viewModel.networkException.observe(viewLifecycleOwner, EventObserver {
-            showNotify(it.message ?: "Network error")
+            showNotify(getDefaultNotifyTitle(), it.message ?: "Network error")
         })
     }
 
@@ -76,5 +79,21 @@ open class BaseFragment : Fragment() {
         })
     }
 
+    protected fun registerObserverLoadingMoreEvent(viewModel: BaseViewModel,
+    viewLifecycleOwner: LifecycleOwner){
+        viewModel.isLoadingMore.observe(viewLifecycleOwner,EventObserver{
+            isShow->
+            showLoadingMore(isShow)
+        })
+    }
+
+    protected fun showLoadingMore(isShow: Boolean){
+
+    }
+
+
+    private fun getDefaultNotifyTitle(): String {
+        return getString(R.string.default_notify_title)
+    }
 
 }

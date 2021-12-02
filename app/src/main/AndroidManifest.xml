@@ -11,9 +11,11 @@
         android:theme="@style/Theme.FatherOfApps"
         >
         <activity
+            android:exported="true"
             android:screenOrientation="portrait"
             android:name=".activities.MainActivity" />
         <activity
+            android:exported="true"
             android:screenOrientation="portrait"
             android:name=".activities.SplashActivity">
             <intent-filter>

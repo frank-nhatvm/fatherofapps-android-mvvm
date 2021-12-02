@@ -1,12 +1,10 @@
 package com.fatherofapps.androidbase
 
 import android.app.Application
-import com.fatherofapps.androidbase.di.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
-public class CustomApplication : Application(){
+@HiltAndroidApp
+class CustomApplication : Application(){
 
-    open val appComponent by lazy {
-        DaggerAppComponent.factory().create(applicationContext)
-    }
 
 }
