@@ -96,4 +96,18 @@ open class BaseFragment : Fragment() {
         return getString(R.string.default_notify_title)
     }
 
+    protected fun registerAllExceptionEvent( viewModel: BaseViewModel,
+                                             viewLifecycleOwner: LifecycleOwner){
+        registerObserverExceptionEvent(viewModel,viewLifecycleOwner)
+        registerObserverNetworkExceptionEvent(viewModel,viewLifecycleOwner)
+        registerObserverMessageEvent(viewModel,viewLifecycleOwner)
+    }
+
+    protected fun registerObserverLoadingEvent(viewModel: BaseViewModel,viewLifecycleOwner: LifecycleOwner){
+        viewModel.isLoading.observe(viewLifecycleOwner,EventObserver{
+                isShow ->
+            showLoading(isShow)
+        })
+    }
+
 }

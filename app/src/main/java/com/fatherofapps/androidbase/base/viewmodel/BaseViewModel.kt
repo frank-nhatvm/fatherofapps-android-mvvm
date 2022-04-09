@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.fatherofapps.androidbase.base.network.BaseNetworkException
 import com.fatherofapps.androidbase.base.network.NetworkErrorException
 import com.fatherofapps.androidbase.common.Event
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Job
 
 open class BaseViewModel : ViewModel() {
 
@@ -28,6 +30,19 @@ open class BaseViewModel : ViewModel() {
 
     var isLoadingMore = MutableLiveData<Event<Boolean>>()
         protected set
+
+    var parentJob: Job? = null
+        protected set
+
+    protected fun registerJobFinish(){
+        parentJob?.invokeOnCompletion {
+            showLoading(false)
+        }
+    }
+
+    val handler = CoroutineExceptionHandler { _, exception ->
+        parseErrorCallApi(exception)
+    }
 
     protected fun showError(messageId: Int) {
         errorMessageResourceId.postValue(Event(messageId))
