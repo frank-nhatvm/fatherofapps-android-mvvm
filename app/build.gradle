@@ -16,12 +16,12 @@ android {
         dataBinding = true
     }
 
-    compileSdkVersion 32
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.fatherofapps.androidbase"
         minSdkVersion 21
-        targetSdkVersion 32
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -59,18 +59,19 @@ android {
     productFlavors {
 
         dev {
-            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_DEV'])
-            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_DEV'])
+            buildConfigField("String", "BASE_URL_JSON_PLACE_HOLDER", apikeyProperties['BASE_URL_JSON_PLACE_HOLDER_DEV'])
+            buildConfigField("String", "BASE_URL_STACKOVERFLOW", apikeyProperties['BASE_URL_STACKOVERFLOW_DEV'])
+
         }
 
         staging {
-            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_STAGING'])
-            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_STAGING'])
+            buildConfigField("String", "BASE_URL_JSON_PLACE_HOLDER", apikeyProperties['BASE_URL_JSON_PLACE_HOLDER_STAGING'])
+            buildConfigField("String", "BASE_URL_STACKOVERFLOW", apikeyProperties['BASE_URL_STACKOVERFLOW_STAGING'])
         }
 
         live {
-            buildConfigField("String", "BASE_URL", apikeyProperties['BASE_URL_LIVE'])
-            buildConfigField("String", "ACCESS_TOKEN", apikeyProperties['ACCESS_TOKEN_LIVE'])
+            buildConfigField("String", "BASE_URL_JSON_PLACE_HOLDER", apikeyProperties['BASE_URL_JSON_PLACE_HOLDER_LIVE'])
+            buildConfigField("String", "BASE_URL_STACKOVERFLOW", apikeyProperties['BASE_URL_STACKOVERFLOW_LIVE'])
         }
 
     }

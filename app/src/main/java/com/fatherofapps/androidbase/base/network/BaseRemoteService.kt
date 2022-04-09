@@ -1,14 +1,16 @@
 package com.fatherofapps.androidbase.base.network
 
+import android.util.Log
 import retrofit2.Response
 
-class BaseRemoteService : BaseService() {
+open class BaseRemoteService : BaseService() {
 
     protected suspend fun <T : Any> callApi(call: suspend () -> Response<T>): NetworkResult<T> {
         val response: Response<T>
         try {
             response = call.invoke()
         } catch (t: Throwable) {
+            Log.e("Frank","BaseRemoteService ${t.message}")
             return NetworkResult.Error(parseNetworkErrorException(t))
         }
 

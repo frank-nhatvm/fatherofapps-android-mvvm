@@ -25,30 +25,40 @@ class NetworkModule {
 //        return retrofit.create(CustomerAPI::class.java)
 //    }
 
+    @Provides
+    fun provideJsonPlaceHolderApi(@Named("JsonPlaceHolderSite") retrofit: Retrofit): JsonPlaceHolderApi {
+        return retrofit.create(JsonPlaceHolderApi::class.java)
+    }
+
+    @Provides
+    fun provideStackOverFlowApi(@Named("StackOverFlowSite") retrofit: Retrofit): StackOverFlowApi {
+        return retrofit.create(StackOverFlowApi::class.java)
+    }
+
 
     @Provides
     @Singleton
-    @Named("MainSite")
+    @Named("JsonPlaceHolderSite")
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         moshiConverterFactory: MoshiConverterFactory
     ): Retrofit {
 
         return Retrofit.Builder().addConverterFactory(moshiConverterFactory)
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL_JSON_PLACE_HOLDER)
             .client(okHttpClient)
             .build()
     }
 
     @Provides
     @Singleton
-    @Named("FatherOfApps")
+    @Named("StackOverFlowSite")
     fun provideRetrofitNewYorkTime(
         okHttpClient: OkHttpClient,
         moshiConverterFactory: MoshiConverterFactory
     ): Retrofit {
         return Retrofit.Builder().addConverterFactory(moshiConverterFactory)
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL_STACKOVERFLOW)
             .client(okHttpClient)
             .build()
     }

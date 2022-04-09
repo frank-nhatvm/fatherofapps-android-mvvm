@@ -52,6 +52,13 @@ open class BaseFragment : Fragment() {
         }
     }
 
+    protected fun registerAllExceptionEvent( viewModel: BaseViewModel,
+                                             viewLifecycleOwner: LifecycleOwner){
+        registerObserverExceptionEvent(viewModel,viewLifecycleOwner)
+        registerObserverNetworkExceptionEvent(viewModel,viewLifecycleOwner)
+        registerObserverMessageEvent(viewModel,viewLifecycleOwner)
+    }
+
     protected fun registerObserverExceptionEvent(
         viewModel: BaseViewModel,
         viewLifecycleOwner: LifecycleOwner
@@ -84,6 +91,13 @@ open class BaseFragment : Fragment() {
         viewModel.isLoadingMore.observe(viewLifecycleOwner,EventObserver{
             isShow->
             showLoadingMore(isShow)
+        })
+    }
+
+    protected fun registerObserverLoadingEvent(viewModel: BaseViewModel,viewLifecycleOwner: LifecycleOwner){
+        viewModel.isLoading.observe(viewLifecycleOwner,EventObserver{
+            isShow ->
+            showLoading(isShow)
         })
     }
 
