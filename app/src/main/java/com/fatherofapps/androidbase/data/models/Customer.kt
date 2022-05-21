@@ -12,13 +12,35 @@ class Customer(
     var certificates: String? = null
 ){
     fun toCustomerEntity(): CustomerEntity{
+        val customerId = if(id == -1L) 0 else id
         return CustomerEntity(
+            id = customerId,
             firstName = firstName ?: "",
             lastName = lastName ?: "",
             shortDescription = shortDescription ?: "",
             stars = stars,
             certificates = certificates
         )
+    }
+
+    fun isValidateFirstName(): Boolean{
+        return (firstName?.isNotEmpty() == true)
+    }
+
+    fun isValidateLastName():Boolean{
+        return (lastName?.isNotEmpty() == true)
+    }
+
+    fun isValidateShortDescription(): Boolean{
+        return (shortDescription?.isNotEmpty() == true)
+    }
+
+    fun isValidateData():Boolean{
+        return isValidateFirstName() && isValidateLastName() && isValidateShortDescription()
+    }
+
+    fun fullName(): String{
+        return "$firstName $lastName"
     }
 }
 

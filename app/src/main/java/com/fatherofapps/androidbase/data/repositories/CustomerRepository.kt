@@ -7,8 +7,9 @@ import com.fatherofapps.androidbase.data.services.CustomerRemoteService
 import com.fatherofapps.androidbase.di.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class CustomerRepository constructor(
+class CustomerRepository @Inject constructor(
     private val customerDao: CustomerDao,
     private val customerLocalService: CustomerLocalService,
     @IoDispatcher private val dispatcher: CoroutineDispatcher

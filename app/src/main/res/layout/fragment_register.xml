@@ -2,14 +2,118 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="registerViewModel"
             type="com.fatherofapps.androidbase.ui.customer.register.RegisterViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/first_name"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:inputType="text"
+                android:onTextChanged="@{registerViewModel::onFirstnameChanged}"
+                android:text="@={registerViewModel.currentCustomer.firstName}"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/first_name_warning"
+                android:textColor="@color/error_color"
+                android:textSize="12sp"
+                android:visibility="@{registerViewModel.currentCustomer.validateFirstName ? View.GONE : View.VISIBLE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/last_name"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <EditText
+                android:onTextChanged="@{registerViewModel::onLastnameChanged}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:inputType="text"
+                android:text="@={registerViewModel.currentCustomer.lastName}"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/last_name_warning"
+                android:textColor="@color/error_color"
+                android:textSize="12sp"
+                android:visibility="@{registerViewModel.currentCustomer.validateLastName ? View.GONE : View.VISIBLE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/short_description"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:inputType="text"
+                android:onTextChanged="@{registerViewModel::onShortDescriptionChanged}"
+                android:text="@={registerViewModel.currentCustomer.shortDescription}"
+                android:textColor="@color/text_color"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/last_name_warning"
+                android:textColor="@color/error_color"
+                android:textSize="12sp"
+                android:visibility="@{registerViewModel.currentCustomer.validateShortDescription ? View.GONE : View.VISIBLE}" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:alpha="@{registerViewModel.currentCustomer.validateData ? 1.0f : 0.8f}"
+                android:enabled="@{registerViewModel.currentCustomer.validateData}"
+                android:onClick="@{() -> registerViewModel.registerAction()}"
+                android:paddingVertical="12dp"
+                android:text="@string/register"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
 
     </androidx.core.widget.NestedScrollView>
 </layout>

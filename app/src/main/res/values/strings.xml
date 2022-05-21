@@ -1,4 +1,15 @@
 <resources>
-    <string name="app_name">FatherOfApps</string>
+    <string name="app_name">FatherOfApps-Room</string>
     <string name="default_notify_title">Message</string>
+    <string name="first_name">Firstname</string>
+    <string name="last_name">Lastname</string>
+    <string name="short_description">Short description</string>
+    <string name="first_name_warning">Firstname can not be empty.</string>
+    <string name="last_name_warning">Lastname can not be empty.</string>
+    <string name="short_description_warning">Short description can not be empty.</string>
+    <string name="first_name_hint">Enter your firstname</string>
+    <string name="last_name_hint">Enter your lastname</string>
+    <string name="short_description_hint">Enter a short description</string>
+    <string name="register">Register</string>
+    <string name="add_customer">Add customer</string>
 </resources>
